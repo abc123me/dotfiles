@@ -1,0 +1,49 @@
+#!/usr/bin/env sh
+
+# Meant to be sourced by zsh/bash
+
+# Editors
+alias n='nano'
+alias v='neovim'
+
+# Utilities
+alias b='bat'
+alias c='cat'
+alias r='reset'
+alias s='ssh'
+
+# Git
+alias g='git' 
+alias gs='git status'
+alias gb='git branch'
+alias gk='git checkout'
+alias gh='git cherry-pick'
+alias gl='git log'
+alias ga='git add' 
+alias gc='git commit'
+alias gu='git push'
+alias gfu='git push --force'
+alias gcfg='git config'
+
+# Git rebase
+alias grb='git rebase'
+alias gra='git rebase --abort'
+alias grc='git rebase --continue'
+alias grs='git rebase --skip'
+
+# Git submodules
+alias gsm='git submodule'
+alias gsu='git submodule update'
+alias gsi='git submodule init'
+
+# Enable color support of ls and other stuff
+if [ -x /usr/bin/dircolors ]; then
+	test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+	alias ls='ls --color=auto'
+	alias dir='dir --color=auto'
+	alias vdir='vdir --color=auto'
+	alias grep='grep --color=auto'
+	alias fgrep='fgrep --color=auto'
+	alias egrep='egrep --color=auto'
+	alias diff='git diff --no-index -- '
+fi

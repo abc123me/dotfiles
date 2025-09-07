@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+
+# Meant to be sourced by bash or zsh
+
+add2path() {
+	if [ -d "$1" ]; then
+		tr ':' '\n' <<< "$PATH" | while read ln; do
+			if [ "$1" = "$ln" ]; then
+				return 0
+			fi
+		done
+		export PATH="$1:$PATH"
+	fi
+}
