@@ -1,0 +1,25 @@
+## Syntax highlighting for local_skeleton_permissions.txt
+
+syntax mkdev ".*permissions.*.txt"
+magic "Makedev permissions"
+comment "#"
+
+# GID column
+color lightmagenta "^(/[^/ ]+)+\s+[d|f]\s+[0-7]{3}\s+[0-9]+\s+[0-9]+"
+# UID column
+color lightred     "^(/[^/ ]+)+\s+[d|f]\s+[0-7]{3}\s+[0-9]+"
+# Chmod column
+color lightgreen   "^(/[^/ ]+)+\s+[d|f]\s+[0-9]{3}"
+# Type column
+color lightcyan    "^(/[^/ ]+)+\s+[d|f]"
+# Name column
+color lightyellow  "^(/[^/ ]+)+"
+
+# Dashed columns
+color lightblack   "\s+[-]?"
+
+# Comments.
+color cyan         "#.*"
+
+# Trailing whitespace.
+color ,green       "[[:space:]]+$"

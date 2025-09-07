@@ -1,0 +1,48 @@
+## Syntax highlighting for C/C++/Obj-C files.
+
+syntax m "\.dtsi?$"
+magic "Device tree source"
+comment "//"
+
+# Errors
+# color lightred "^[^#]+.+[^;{]((/\*.+\*/)|(//.*))?$"
+
+# Strings
+color lightyellow ""([^"]|\\")*"|#[[:blank:]]*include[[:blank:]]*<[^>]+>"
+color cyan "^[[:blank:]]*#[[:blank:]]*(define|include|import|(un|ifn?)def|endif|el(if|se)|if|warning|error)\s+"([^"]|\\")*"|#[[:blank:]]*include[[:blank:]]*<[^>]+>"
+
+# DTS Specials
+color lightcyan "\/dts-v[0-9]+\/"
+color red "^[[:blank:]]*#[[:blank:]]*(define|include|import|(un|ifn?)def|endif|el(if|se)|if|warning|error)"
+color lightcyan "LINUX"
+color lightcyan "UBOOT"
+
+# Names
+color lightblack "#[a-z]+-cells"
+color yellow "reg"
+color yellow "compatible"
+color yellow "status"
+color yellow "gpios"
+
+# Registers
+color lightgreen "<.+>"
+color white "[<>]"
+color lightmagenta "\/bits\/ [0-9]+"
+
+# References
+color lightcyan "&[a-z0-9_]+"
+
+# New definitions
+color cyan "^[^&]{1}.+\s+\{"
+color white "\{$"
+
+# Trailing whitespace.
+color ,green "[[:space:]]+$"
+
+# Curly-braces missing semicolons
+color white,lightred "}[^;]?((/\*.+)|(//.*))?$"
+color white,lightred ">[^;]?((/\*.+)|(//.*))?$"
+
+# Comments.
+color brightblue "//.*"
+color brightblue start="/\*" end="\*/"
