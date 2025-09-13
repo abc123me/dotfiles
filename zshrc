@@ -1,5 +1,6 @@
 # Append dotfile path
-export DOTFILES_PATH="${0:a:h}"
+export ZSHRC_PATH="$(realpath ~/.zshrc)"
+export DOTFILES_PATH="$(dirname "$ZSHRC_PATH")"
 
 # Throw down some ulimits
 ulimit -u 10000

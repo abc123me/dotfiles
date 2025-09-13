@@ -6,7 +6,7 @@ SRC_PATH="$(realpath "${BASH_SOURCE[0]}")"
 export DOTFILES_PATH="$(dirname "$SRC_PATH")"
 echo -e "\e[1;33mSetting up dotfiles in ${DOTFILES_PATH}!\e[0m"
 
-bkdf() {
+back_df() {
 	if [ -f "$1" ]; then
 		if [ -f "$1.bak" ]; then
 			echo -e "\e[1;31mBackup file (${1}.bak) already exists, please delete or rename!\e[0m"
@@ -16,15 +16,18 @@ bkdf() {
 			echo -e "\e[1;33mDotfile $1 already esists, backed up to ${1}.bak!\e[0m"
 		fi
 	fi
+}
+link_df() {
+	back_df "$1"
 	if [ -n "$2" ]; then
 		ln -s "$2" "$1"
 		echo -e "\e[1;32mSymlink created for $2\e[0m"
 	fi
 }
 
-bkdf "$HOME/.zshrc"  "$DOTFILES_PATH/zshrc"
-bkdf "$HOME/.bashrc" "$DOTFILES_PATH/bashrc"
-bkdf "$HOME/.nanorc"
+link_df "$HOME/.zshrc"  "$DOTFILES_PATH/zshrc"
+link_df "$HOME/.bashrc" "$DOTFILES_PATH/bashrc"
+back_df "$HOME/.nanorc"
 
 cat "$DOTFILES_PATH/nanorc" | envsubst >"$HOME/.nanorc"
 echo -e "\e[1;32mCreated nanorc via envsubst\e[0m"
