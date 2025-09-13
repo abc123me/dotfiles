@@ -21,6 +21,7 @@ source "${DOTFILES_PATH}/zsh/completion.zsh"
 source "${DOTFILES_PATH}/zsh/purity.zsh"
 
 # Source common shell stuff
+source "${DOTFILES_PATH}/shell/env"
 source "${DOTFILES_PATH}/shell/utils"
 source "${DOTFILES_PATH}/shell/aliases"
 
