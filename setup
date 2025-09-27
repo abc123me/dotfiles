@@ -18,6 +18,13 @@ back_df() {
 	fi
 }
 link_df() {
+	rp1="$(realpath "$1")"
+	rp2="$(realpath "$2")"
+	if [ -h "$1" ] && [ "$rp1" == "$rp2" ]; then
+		echo -e "\e[1;32mDotfile \"$1\" already linked, not doing anything!\e[0m"
+		return 0
+	fi
+
 	back_df "$1"
 	if [ -n "$2" ]; then
 		ln -s "$2" "$1"

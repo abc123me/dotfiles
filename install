@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+# Source distro information
+if [ -f /etc/os-release ]; then
+	source /etc/os-release
+else
+	echo "Could not detect Linux distribution."
+	exit 1
+fi
+
+pkgs=("ripgrep" "eza" "fzf" "zsh" "nano" "tmux" "htop" "btop" "nmap" "iperf" "git" "net-tools")
+pkgs_apt=("fd-find")
+pkgs_pac=("fd")
+
+# Switch case on distro ID
+case "$ID" in
+	debian)
+		echo -e "\e[1;33mDebian detected, Installing packages using apt\e[0m"
+		sudo apt install -y "$pkgs" "$pkgs_apt"
+		;;
+	arch)
+		echo -e "\e[1;33mArch linux detected, Installing packages using pacman\e[0m"
+		sudo pacman --noconfirm -S "$pkgs" "$pkgs_pac"
+		;;
+	*)
+		echo "Unknown distribution: $ID"
+		;;
+esac
