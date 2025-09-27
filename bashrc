@@ -14,7 +14,7 @@ source "${DOTFILES_PATH}/shell/utils"
 source "${DOTFILES_PATH}/shell/aliases"
 
 # Fuzzy find
-[ -x "$(which fzf)" ] && source <(fzf --bash)
+[ -x "$(which fzf)" ] && source <(fzf --bash) || true
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options

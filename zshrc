@@ -9,7 +9,7 @@ bindkey "^[[1;5C" forward-word  # Ctrl+Right
 bindkey "^[[1;5D" backward-word # Ctrl+Left
 
 # Fuzzy find
-[ -x "$(which fzf)" ] && source <(fzf --zsh)
+[ -x "$(which fzf)" ] && source <(fzf --zsh) || true
 
 # Setup tab completion
 source "${DOTFILES_PATH}/zsh/completion.zsh"
