@@ -2,9 +2,6 @@
 export ZSHRC_PATH="$(realpath ~/.zshrc)"
 export DOTFILES_PATH="$(dirname "$ZSHRC_PATH")"
 
-# Throw down some ulimits
-ulimit -u 10000
-
 # Bind some common keys
 bindkey "^[[3~"   delete-char   # Delete
 bindkey "^H"      delete-word   # Ctrl+Delete
