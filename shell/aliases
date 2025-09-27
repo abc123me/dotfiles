@@ -12,9 +12,14 @@ alias r='reset'
 alias s='ssh'
 
 # Aliases
-[ -x "$(which eza)" ] && alias ls='eza'
+if [ -x "$(which eza)" ]; then
+	alias ls='eza'
+elif [ -x /usr/bin/dircolors ]; then
+	alias ls='ls --color=auto'
+fi
 alias l='ls'
 alias la='ls -a'
+alias ll='ls -l'
 
 # Git
 alias g='git'
@@ -43,7 +48,6 @@ alias gsi='git submodule init'
 # Enable color support of ls and other stuff
 if [ -x /usr/bin/dircolors ]; then
 	test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-	alias ls='ls --color=auto'
 	alias dir='dir --color=auto'
 	alias vdir='vdir --color=auto'
 	alias grep='grep --color=auto'
