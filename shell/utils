@@ -12,3 +12,7 @@ add2path() {
 		export PATH="$1:$PATH"
 	fi
 }
+
+if [ -f "${HOME}/.config/dotfiles/shell/utils" ]; then
+    source "${HOME}/.config/dotfiles/shell/utils"
+fi

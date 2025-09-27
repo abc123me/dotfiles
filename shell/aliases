@@ -7,10 +7,14 @@ alias n='nano'
 alias v='neovim'
 
 # Utilities
-alias b='bat'
-alias c='cat'
+[ -x "$(which bat)" ] && alias cat='bat'
 alias r='reset'
 alias s='ssh'
+
+# Aliases
+[ -x "$(which eza)" ] && alias ls='eza'
+alias l='ls'
+alias la='ls -a'
 
 # Git
 alias g='git'
@@ -46,4 +50,8 @@ if [ -x /usr/bin/dircolors ]; then
 	alias fgrep='fgrep --color=auto'
 	alias egrep='egrep --color=auto'
 	alias diff='git diff --no-index -- '
+fi
+
+if [ -f "${HOME}/.config/dotfiles/shell/aliases" ]; then
+	source "${HOME}/.config/dotfiles/shell/aliases"
 fi
