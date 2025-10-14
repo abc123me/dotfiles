@@ -16,11 +16,13 @@ pkgs_pac=("fd")
 case "$ID" in
 	debian)
 		echo -e "\e[1;33mDebian detected, Installing packages using apt\e[0m"
-		sudo apt install -y "$pkgs" "$pkgs_apt"
+		echo sudo apt install -y "${pkgs[@]}" "${pkgs_apt[@]}"
+		sudo apt install -y "${pkgs[@]}" "${pkgs_apt[@]}"
 		;;
 	arch)
 		echo -e "\e[1;33mArch linux detected, Installing packages using pacman\e[0m"
-		sudo pacman --noconfirm -S "$pkgs" "$pkgs_pac"
+		echo sudo pacman --noconfirm -S "${pkgs[@]}" "${pkgs_pac[@]}"
+		sudo pacman --noconfirm -S "${pkgs[@]}" "${pkgs_pac[@]}"
 		;;
 	*)
 		echo "Unknown distribution: $ID"
