@@ -8,9 +8,9 @@ else
 	exit 1
 fi
 
-pkgs=("ripgrep" "eza" "fzf" "zsh" "nano" "tmux" "htop" "btop" "nmap" "iperf" "git" "net-tools")
+pkgs=("ripgrep" "fzf" "zsh" "nano" "tmux" "htop" "btop" "nmap" "iperf" "git" "net-tools")
 pkgs_apt=("fd-find")
-pkgs_pac=("fd")
+pkgs_pac=("fd" "eza")
 
 # Switch case on distro ID
 case "$ID" in
