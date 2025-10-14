@@ -3,17 +3,27 @@
 set -eo pipefail
 
 SRC_PATH="$(realpath "${BASH_SOURCE[0]}")"
+DOTFILES_STAMP="$HOME/.dotfiles_installed"
+
+SKIP_BACKUP=0
+if [ -e "$DOTFILES_STAMP" ]; then
+	echo -e "\e[1;33mDotfiles are already installed, not backing anything up!\e[0m"
+	SKIP_BACKUP=1
+fi
+
 export DOTFILES_PATH="$(dirname "$SRC_PATH")"
 echo -e "\e[1;33mSetting up dotfiles in ${DOTFILES_PATH}!\e[0m"
 
 back_df() {
-	if [ -f "$1" ]; then
-		if [ -f "$1.bak" ]; then
-			echo -e "\e[1;31mBackup file (${1}.bak) already exists, please delete or rename!\e[0m"
-			exit 1
-		else
-			mv "$1" "${1}.bak"
-			echo -e "\e[1;33mDotfile $1 already esists, backed up to ${1}.bak!\e[0m"
+	if [ $SKIP_BACKUP -eq 0 ]; then
+		if [ -f "$1" ]; then
+			if [ -f "$1.bak" ]; then
+				echo -e "\e[1;31mBackup file (${1}.bak) already exists, please delete or rename!\e[0m"
+				exit 1
+			else
+				mv "$1" "${1}.bak"
+				echo -e "\e[1;33mDotfile $1 already esists, backed up to ${1}.bak!\e[0m"
+			fi
 		fi
 	fi
 }
@@ -40,3 +50,4 @@ cat "$DOTFILES_PATH/nanorc" | envsubst >"$HOME/.nanorc"
 echo -e "\e[1;32mCreated nanorc via envsubst\e[0m"
 
 echo -e "\e[1;32mDotfiles create successfully!\e[0m"
+touch "$DOTFILES_STAMP"
