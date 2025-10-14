@@ -14,7 +14,7 @@ pkgs_pac=("fd" "eza")
 
 if [ -n "$XDG_SESSION_ID" ]; then
 	echo "We're on a desktop machine, installing desktop packages as well!"
-	pkgs+=("firefox" "kitty")
+	pkgs+=("firefox-esr" "kate" "kitty")
 fi
 
 # Switch case on distro ID
