@@ -38,7 +38,10 @@ alias gcfg='git config'
 alias grb='git rebase'
 alias gra='git rebase --abort'
 alias grc='git rebase --continue'
-alias grs='git rebase --skip'
+
+# Git restore
+alias gr='git restore'
+alias grs='git restore --staged'
 
 # Git submodules
 alias gsm='git submodule'
