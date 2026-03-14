@@ -1,6 +1,6 @@
 ## Syntax highlighting for C/C++/Obj-C files.
 
-syntax m "\.dtsi?$"
+syntax m "\.dts(i|o)?$"
 magic "Device tree source"
 comment "//"
 
