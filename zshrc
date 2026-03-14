@@ -3,8 +3,9 @@ export ZSHRC_PATH="$(realpath ~/.zshrc)"
 export DOTFILES_PATH="$(dirname "$ZSHRC_PATH")"
 
 # Bind some common keys
+bindkey "^H"      backward-delete-word   # Ctrl+Delete
+bindkey "^[[3;5~" delete-word   # Ctrl+Delete
 bindkey "^[[3~"   delete-char   # Delete
-bindkey "^H"      delete-word   # Ctrl+Delete
 bindkey "^[[1;5C" forward-word  # Ctrl+Right
 bindkey "^[[1;5D" backward-word # Ctrl+Left
 
