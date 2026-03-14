@@ -12,9 +12,7 @@ alias r='reset'
 alias s='ssh'
 
 # Aliases
-if [ -x "$(which eza)" ]; then
-	alias ls='eza'
-elif [ -x /usr/bin/dircolors ]; then
+if [ -x /usr/bin/dircolors ]; then
 	alias ls='ls --color=auto'
 fi
 alias l='ls'
@@ -27,6 +25,7 @@ alias gs='git status'
 alias gb='git branch'
 alias gk='git checkout'
 alias gh='git cherry-pick'
+alias gcp='git cherry-pick'
 alias gl='git log'
 alias ga='git add'
 alias gc='git commit'
