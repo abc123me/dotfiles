@@ -61,3 +61,35 @@ fi
 if [ -f "${HOME}/.config/dotfiles/shell/aliases" ]; then
 	source "${HOME}/.config/dotfiles/shell/aliases"
 fi
+
+export BSP_DIR=""
+export LAST_CDBSP_NAME=""
+
+[ -d "/bsp" ] && BSP_DIR="/bsp"
+[ -d "/opt/bsp" ] && BSP_DIR="/opt/bsp"
+[ -d "/local_build_dir/${USER}/projects" ] && BSP_DIR="/local_build_dir/${USER}/projects"
+
+if [ -d "$BSP_DIR" ]; then
+	cdinto() {
+		into="$1"; shift 1
+
+		if [ ! -d "$BSP_DIR" ]; then
+			echo "No BSP directory!"
+			return 1
+		fi
+
+		if [ -z "LAST_CDBSP_NAME" ]; then
+			echo -e "\e[1;33mDefaulting to main\e[0m"
+			export LAST_CDBSP_NAME="main"
+		fi
+
+		cd "${BSP_DIR}/${LAST_CDBSP_NAME}/${into}"
+	}
+
+	cdbsp() {
+		cdinto "jlbsp" "$@"
+	}
+	cdbds() {
+		cdinto "builds" "$@"
+	}
+fi
