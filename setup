@@ -42,8 +42,16 @@ link_df() {
 	fi
 }
 
-link_df "$HOME/.zshrc"  "$DOTFILES_PATH/zshrc"
-link_df "$HOME/.bashrc" "$DOTFILES_PATH/bashrc"
+if [ -z "$XDG_CONFIG_HOME" ]; then
+	XDG_CONFIG_HOME="${HOME}/.config"
+fi
+
+mkdir -p "${XDG_CONFIG_HOME}/tmux-powerline"
+
+link_df "$HOME/.zshrc"                              "$DOTFILES_PATH/zshrc"
+link_df "$HOME/.bashrc"                             "$DOTFILES_PATH/bashrc"
+link_df "$HOME/.tmux.conf"                          "$DOTFILES_PATH/tmux/tmux.conf"
+link_df "$XDG_CONFIG_HOME/tmux-powerline/config.sh" "$DOTFILES_PATH/tmux/powerline-config.sh"
 back_df "$HOME/.nanorc"
 
 cat "$DOTFILES_PATH/nanorc" | envsubst >"$HOME/.nanorc"
