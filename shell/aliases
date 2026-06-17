@@ -77,9 +77,16 @@ if [ -d "$BSP_DIR" ]; then
 			return 1
 		fi
 
-		if [ -z "LAST_CDBSP_NAME" ]; then
-			echo -e "\e[1;33mDefaulting to main\e[0m"
-			export LAST_CDBSP_NAME="main"
+		if [ $# -gt 0 ]; then
+			export LAST_CDBSP_NAME="$1"
+			if [ $# -gt 1 ]; then
+				into="${into}/${2}"
+			fi
+		else
+			if [ -z "$LAST_CDBSP_NAME" ]; then
+				echo -e "\e[1;33mDefaulting to main\e[0m"
+				export LAST_CDBSP_NAME="main"
+			fi
 		fi
 
 		cd "${BSP_DIR}/${LAST_CDBSP_NAME}/${into}"
