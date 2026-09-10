@@ -21,20 +21,26 @@ alias ll='ls -l'
 
 # Git
 alias g='git'
-alias gs='git status'
-alias gb='git branch'
-alias gck='git checkout'
-alias gcp='git cherry-pick'
-alias gl='git log'
 alias ga='git add'
+alias gb='git branch'
 alias gc='git commit'
-alias gu='git push'
+alias gck='git checkout'
+alias gf='git fetch'
 alias gfu='git push --force'
+alias gl='git log'
+alias gs='git status'
+alias gu='git push'
 alias gcfg='git config'
 
+# Git cherry-pick
+alias gcp='git cherry-pick'
+alias gcpa='git cherry-pick --abort'
+alias gcps='git cherry-pick --skip'
+alias gcpc='git cherry-pick --continue'
+
 # Git rebase
-alias grb='git rebase'
 alias gra='git rebase --abort'
+alias grb='git rebase'
 alias grc='git rebase --continue'
 
 # Git restore
